@@ -9,7 +9,7 @@ export function Footer() {
         <div>
           <Logo size="sm" />
           <p className="mt-3 max-w-xs text-sm text-mute">
-            High-converting sites for urban local businesses. {site.city}.
+            Websites for cafes, salons, clinics, and trades. {site.city}.
           </p>
         </div>
         <div className="flex flex-col gap-2 text-sm text-mute">

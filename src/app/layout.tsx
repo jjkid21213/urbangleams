@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: `%s — ${site.name}`,
   },
   description:
-    "High-converting websites for urban local businesses: cafes, salons, clinics, and trades. Australia.",
+    "Websites for cafes, salons, clinics, and trades. Australia.",
   openGraph: {
     title: site.name,
     description: site.tagline,

@@ -19,8 +19,8 @@ export default function Home() {
             <span className="italic text-gleam">gleam</span>.
           </h1>
           <p className="mt-6 max-w-xl text-lg text-mute">
-            I build high-converting sites for cafes, salons, clinics, and trades.
-            Fast. Expensive-looking. Built to get the enquiry — not a pretty brochure.
+            I build websites for cafes, salons, clinics, and trades. Fast on a
+            phone, easy to book, and built so people actually get in touch.
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-6">
             <Link href="/contact" className="btn-gleam">
@@ -38,7 +38,7 @@ export default function Home() {
         <div className="flex items-end justify-between gap-6">
           <div>
             <p className="text-xs uppercase tracking-[0.22em] text-gleam">Selected work</p>
-            <h2 className="mt-3 font-serif text-4xl italic">Spec sites. Real problems.</h2>
+            <h2 className="mt-3 font-serif text-4xl italic">A few sample builds.</h2>
           </div>
           <Link href="/work" className="hidden text-sm text-mute hover:text-paper md:block">
             All work
@@ -61,7 +61,7 @@ export default function Home() {
       <section className="border-y border-line bg-panel/40">
         <div className="mx-auto max-w-6xl px-5 py-20 md:px-8">
           <p className="text-xs uppercase tracking-[0.22em] text-gleam">Packages</p>
-          <h2 className="mt-3 max-w-lg font-serif text-4xl italic">Prices on the page. No theatre.</h2>
+          <h2 className="mt-3 max-w-lg font-serif text-4xl italic">Prices on the page.</h2>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {packages.map((pkg) => (
               <article
@@ -93,10 +93,10 @@ export default function Home() {
         <h2 className="mt-3 font-serif text-4xl italic">Four steps. Then you are live.</h2>
         <ol className="mt-12 grid gap-8 md:grid-cols-4">
           {[
-            ["01", "Discover", "A call. What you sell, who walks in, why the current site is quiet."],
-            ["02", "Design", "Layout and words together. You see a real page, not a moodboard."],
-            ["03", "Ship", "Domain, form, mobile. Live on a URL you can send from your phone."],
-            ["04", "Care", "Optional. Updates so the site does not age in a drawer."],
+            ["01", "Call", "What you sell, who walks in, and what the current site is missing."],
+            ["02", "Design", "Layout and copy together. You see a real page before anything goes live."],
+            ["03", "Launch", "Domain, form, mobile. A URL you can send from your phone."],
+            ["04", "Care", "Optional. Small updates so the site does not go stale."],
           ].map(([n, t, d]) => (
             <li key={n}>
               <p className="text-gleam">{n}</p>

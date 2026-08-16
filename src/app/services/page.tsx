@@ -14,7 +14,7 @@ export default function ServicesPage() {
       <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
         <p className="text-xs uppercase tracking-[0.22em] text-gleam">Services</p>
         <h1 className="mt-4 max-w-2xl font-serif text-5xl italic md:text-6xl">
-          Three offers. Pick the one that matches the mess.
+          Three offers. Pick the one that fits.
         </h1>
         <p className="mt-5 max-w-xl text-mute">
           For cafes, salons, clinics, and trades. Prices in AUD. Invoice after the call — Stripe, PayPal, or bank.

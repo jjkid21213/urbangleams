@@ -42,7 +42,7 @@ export function ContactForm() {
       <p className="border border-line bg-panel p-6 text-paper">
         {emailed
           ? "Thanks. I will reply within one business day."
-          : `Thanks. Mail is not wired on this host yet — send the same note to ${site.email} and I will pick it up.`}
+          : `Thanks. If this does not land in my inbox, send the same note to ${site.email}.`}
       </p>
     );
   }

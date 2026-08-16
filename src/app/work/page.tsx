@@ -5,7 +5,7 @@ import { caseStudies } from "@/lib/work";
 
 export const metadata: Metadata = {
   title: "Work",
-  description: "Spec case studies for urban local businesses — salon, cafe, and trade.",
+  description: "Sample work for a salon, a cafe, and a trade business.",
 };
 
 export default function WorkPage() {
@@ -16,7 +16,7 @@ export default function WorkPage() {
         Three problems. Three sites.
       </h1>
       <p className="mt-5 max-w-xl text-mute">
-        Spec projects — invented businesses, real situations. Swap these for client work when it lands. Metrics below are targets, not claimed results.
+        Sample projects while client work is underway. The numbers on each page are goals, not claimed results.
       </p>
       <div className="mt-16 grid gap-14">
         {caseStudies.map((study) => (

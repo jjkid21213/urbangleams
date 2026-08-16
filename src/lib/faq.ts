@@ -5,11 +5,11 @@ export const faqs = [
   },
   {
     q: "I already have a site. Why rebuild?",
-    a: "If nobody can book, the offer is unclear, or it takes five seconds to load on a phone, you are paying for a brochure. Conversion is the rebuild.",
+    a: "If nobody can book, the offer is unclear, or it takes five seconds to load on a phone, the current site is not doing much. A rebuild is usually cheaper than ads on a dead page.",
   },
   {
     q: "Can you write the words?",
-    a: "Yes. You talk, I draft. No filler about synergy. We say what you do, who it is for, and what to do next.",
+    a: "Yes. You talk, I draft. We say what you do, who it is for, and what to do next.",
   },
   {
     q: "What do you need from me?",

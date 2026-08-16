@@ -17,13 +17,13 @@ export default function AboutPage() {
         </h1>
         <div className="mt-10 space-y-6 text-lg text-mute">
           <p>
-            Urban Gleams is how I work with local businesses that should look sharper than the template they inherited. {site.city}. Remote-friendly.
+            I work with local businesses that have outgrown a template. Based in {site.city}, happy to work remotely.
           </p>
           <p>
-            I design and ship the site myself. You get a URL, a form that arrives, and pages that say what you do. No account manager. No six-week discovery deck.
+            I design and build the site myself. You get a live URL, a form that actually arrives, and pages that say what you do.
           </p>
           <p>
-            The work on this site is spec until client work replaces it. That is honest. The craft is the same either way.
+            The projects on this site are samples until I swap them for client work.
           </p>
         </div>
         <div className="mt-14 grid gap-8 border-t border-line pt-10 md:grid-cols-2">
@@ -36,7 +36,7 @@ export default function AboutPage() {
           <div>
             <h2 className="text-xs uppercase tracking-[0.18em] text-gleam">What I will not do</h2>
             <p className="mt-3 text-mute">
-              Fake reviews, fake metrics, or a 20-page site with nothing to click. If I cannot help, I will say so in the first call.
+              Fake reviews, fake numbers, or a long site with nothing to click. If I cannot help, I will say so on the first call.
             </p>
           </div>
         </div>
