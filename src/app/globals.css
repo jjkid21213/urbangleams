@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #080807;
+  --paper: #f3eee4;
+  --mute: #9a9488;
+  --gleam: #c9a56a;
+  --gleam-bright: #e8d0a0;
+  --line: rgba(243, 238, 228, 0.1);
+  --panel: #12110f;
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-mute: var(--mute);
+  --color-gleam: var(--gleam);
+  --color-gleam-bright: var(--gleam-bright);
+  --color-line: var(--line);
+  --color-panel: var(--panel);
+  --font-sans: var(--font-outfit);
+  --font-serif: var(--font-instrument);
+}
+
+html {
+  background: var(--ink);
+}
+
+body {
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-outfit), system-ui, sans-serif;
+}
+
+body::before {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.font-serif {
+  font-family: var(--font-instrument), Georgia, serif;
+}
+
+.btn-gleam {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gleam);
+  color: #1a140c;
+  padding: 0.7rem 1.15rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  transition: background 0.15s ease;
+}
+
+.btn-gleam:hover {
+  background: var(--gleam-bright);
+}
+
+.btn-gleam:disabled {
+  opacity: 0.6;
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  color: var(--paper);
+  font-size: 0.9rem;
+  border-bottom: 1px solid var(--gleam);
+  padding-bottom: 0.15rem;
+}
+
+.field {
+  background: var(--ink);
+  border: 1px solid var(--line);
+  color: var(--paper);
+  padding: 0.7rem 0.8rem;
+  outline: none;
+}
+
+.field:focus {
+  border-color: var(--gleam);
+}
+
+.site-mock {
+  border: 1px solid var(--line);
+  overflow: hidden;
+  background: var(--panel);
+}
+
+.site-mock-bar {
+  display: flex;
+  gap: 6px;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.site-mock-bar span {
+  width: 8px;
+  height: 8px;
+  border-radius: 99px;
+  background: var(--line);
+}
+
+.site-mock-body {
+  min-height: 260px;
+  padding: 1.5rem;
+}
+
+.gleam-rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gleam), transparent);
+}
