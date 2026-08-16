@@ -1,20 +1,13 @@
-import { ClearShell } from "../ClearShell";
-import styles from "../clear.module.css";
+import styles from "../ch.module.css";
 
 export default function SecurityPage() {
   return (
-    <ClearShell>
-      <div className={styles.page}>
-        <h1>Security</h1>
-        <p>
-          On a live product this page would name the custodian, the audit cadence, and who
-          holds keys. This showcase does not invent those facts.
-        </p>
-        <p>
-          What it does show: a security page that sounds like an adult wrote it, not a
-          marketing intern with a padlock icon.
-        </p>
-      </div>
-    </ClearShell>
+    <section className={styles.section}>
+      <h2>Security</h2>
+      <p className={styles.lede}>
+        A live product would name the custodian and the audit. This showcase does not invent those.
+        The page exists so you can see how a serious desk talks: no padlock clip-art, no fake ISO badges.
+      </p>
+    </section>
   );
 }

@@ -1,16 +1,13 @@
-import { SloaneShell } from "../SloaneShell";
-import styles from "../sloane.module.css";
+import styles from "../as.module.css";
 
 export default function MakingPage() {
   return (
-    <SloaneShell>
-      <div className={styles.page}>
-        <h1>Making</h1>
-        <p>
-          Cut in Collingwood. Cloth from mills we can name. This page would show process
-          photos on a real job — not stock “woman laughing with salad.”
-        </p>
-      </div>
-    </SloaneShell>
+    <section className={styles.section}>
+      <h2>Making</h2>
+      <p>
+        Cut in Collingwood. Cloth from mills we can name. On a real job this page would hold
+        process photos — not stock “woman laughing with salad.”
+      </p>
+    </section>
   );
 }

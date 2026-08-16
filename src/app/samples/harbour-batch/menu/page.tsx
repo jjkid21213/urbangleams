@@ -1,30 +1,26 @@
-import { BatchShell } from "../BatchShell";
-import styles from "../batch.module.css";
+import styles from "../hb.module.css";
 
 const items = [
-  ["Batch brew", "4.5", "Changing. Ask. We will not do six alternative milks."],
-  ["Egg on fold", "12", "Soft egg, pickles, butter that actually tastes like butter."],
-  ["Birch granola", "14", "Toasted oats, yoghurt, whatever fruit survived the morning."],
-  ["Tomato toast", "11", "Only when tomatoes are worth it. Otherwise it is not on."],
-  ["Kids toast", "5", "One slice. Vegemite or jam. No unicorn dust."],
+  ["Batch brew", "4.5", "Changes. Ask. We will not do six milks."],
+  ["Egg on fold", "12", "Soft egg, pickle, butter that tastes like butter."],
+  ["Birch granola", "14", "Oats, yoghurt, whatever fruit made it."],
+  ["Tomato toast", "11", "Only when tomatoes are worth it."],
 ];
 
 export default function MenuPage() {
   return (
-    <BatchShell>
-      <div className={styles.page}>
-        <h1>Menu</h1>
-        <p className={styles.lede}>Short on purpose. We cook what we can do well before 2pm.</p>
-        {items.map(([n, p, d]) => (
-          <div key={n} className={styles.menuRow}>
-            <div>
-              <strong>{n}</strong>
-              <p>{d}</p>
-            </div>
-            <span>{p}</span>
+    <section className={styles.section}>
+      <h2>Menu</h2>
+      <p className={styles.lede}>Short. We stop cooking when the bread’s gone.</p>
+      {items.map(([n, p, d]) => (
+        <div key={n} className={styles.menuItem}>
+          <div>
+            <strong>{n}</strong>
+            <p>{d}</p>
           </div>
-        ))}
-      </div>
-    </BatchShell>
+          <span>{p}</span>
+        </div>
+      ))}
+    </section>
   );
 }
