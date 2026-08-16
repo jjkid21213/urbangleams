@@ -95,7 +95,7 @@ const books = {
   hours: [
     ["Desk", "09:00–16:00", "Australia/Sydney"],
     ["Fixing", "On request", "Inside desk hours"],
-    ["After hours", "No", "Use $140/hr on a real job — not this sample"],
+    ["After hours", "No", "Showcase desk only"],
   ],
 };
 

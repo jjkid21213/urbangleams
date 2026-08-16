@@ -1,13 +1,16 @@
 export const site = {
   name: "Urban Gleams",
-  tagline: "Agency-quality websites without agency overhead.",
+  tagline: "A proper website, at a price a local business can pay.",
   email: "justinbusiness124@gmail.com",
   phone: "0494300150",
   phoneHref: "tel:+61494300150",
   city: "Australia",
   url: "https://urbangleams.com",
-  hourly: 85,
+  hourly: 60,
 } as const;
+
+export const launchOffer =
+  "Launch Pricing — Available for a limited time while Urban Gleams builds its initial portfolio.";
 
 export const nav = [
   { href: "/work", label: "Work" },

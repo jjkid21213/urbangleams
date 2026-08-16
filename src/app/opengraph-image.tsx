@@ -20,7 +20,7 @@ export default function Og() {
       >
         <div style={{ fontSize: 64, fontWeight: 700 }}>Urban Gleams</div>
         <div style={{ fontSize: 28, marginTop: 16, color: "#8b949e" }}>
-          Custom websites. justinbusiness124@gmail.com · 0494300150
+          Custom websites from $299. justinbusiness124@gmail.com · 0494300150
         </div>
       </div>
     ),

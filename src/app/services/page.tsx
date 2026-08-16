@@ -4,16 +4,16 @@ import { CtaBar } from "@/components/CtaBar";
 import { PricingCalculator } from "@/components/PricingCalculator";
 import { compareRows } from "@/lib/compare";
 import { objections } from "@/lib/objections";
-import { addons, packages } from "@/lib/packages";
-import { bundles, rates } from "@/lib/rates";
+import { addons, carePlans, packages } from "@/lib/packages";
+import { rates } from "@/lib/rates";
 import { services } from "@/lib/services";
-import { site } from "@/lib/site";
+import { launchOffer, site } from "@/lib/site";
 import { included, notIncluded, timeline, whyChoose } from "@/lib/trust";
 
 export const metadata: Metadata = {
   title: "Services & pricing",
   description:
-    "Custom website packages from $2,400. $85/hr outside scope. Australia. Agency-quality work without agency overhead.",
+    "Starter Website $299, Business $499, Growth from $799. $60/hr outside scope. Australia.",
   alternates: { canonical: "/services" },
 };
 
@@ -22,12 +22,13 @@ export default function ServicesPage() {
     <>
       <div className="mx-auto max-w-6xl px-5 py-14 md:px-8 md:py-20">
         <h1 className="max-w-3xl font-display text-5xl font-semibold tracking-tight">
-          You are buying an enquiry machine, not a pile of pages.
+          A proper website, written down, at a price you can pay.
         </h1>
         <p className="mt-5 max-w-2xl text-lg text-mute">
-          AU studios often sit $3k–$15k for a real site. I sit under a full agency and above a theme flip.
-          Fixed packages. {site.hourly}/hr only when we leave the scope.
+          Agencies often charge thousands for a basic site. I keep the look serious and the invoice
+          in the hundreds. Fixed packages. ${site.hourly}/hr only when we leave the scope.
         </p>
+        <p className="mt-4 max-w-2xl border border-line bg-soft px-4 py-3 text-sm">{launchOffer}</p>
 
         <div className="mt-12 grid gap-4">
           {packages.map((pkg) => (
@@ -38,7 +39,7 @@ export default function ServicesPage() {
               }`}
             >
               <div>
-                {pkg.featured ? <p className="text-sm text-accent">Most owners pick this</p> : null}
+                {pkg.featured ? <p className="text-sm text-accent">Most popular ⭐</p> : null}
                 <h2 className="font-display text-3xl font-semibold">{pkg.name}</h2>
                 <p className="mt-2 text-2xl font-semibold">
                   {pkg.price}
@@ -63,8 +64,9 @@ export default function ServicesPage() {
         <section className="mt-16">
           <h2 className="font-display text-3xl font-semibold tracking-tight">Why it costs that</h2>
           <p className="mt-3 max-w-2xl text-mute">
-            Launch is a custom page, not a $900 template. Custom is the working site most businesses need.
-            Studio is the decoy-and-step-up: more pages, tighter art direction, launch support. Care is so the asset does not rot.
+            Starter is a tight site for a sole trader. Business is the usual cafe, salon, clinic, or
+            trade job. Growth is more pages and booking tools. Care is optional after launch, from
+            $19 a month.
           </p>
         </section>
 
@@ -104,7 +106,7 @@ export default function ServicesPage() {
         </section>
 
         <section className="mt-16">
-          <h2 className="font-display text-3xl font-semibold tracking-tight">Rates, add-ons, bundles</h2>
+          <h2 className="font-display text-3xl font-semibold tracking-tight">Rates, add-ons, care</h2>
           <div className="mt-6 grid gap-3 md:grid-cols-2">
             {Object.values(rates).map((row) => (
               <div key={row.label} className="border border-line p-4">
@@ -115,13 +117,13 @@ export default function ServicesPage() {
               </div>
             ))}
           </div>
-          <div className="mt-6 grid gap-3 md:grid-cols-2">
-            {bundles.map((b) => (
-              <div key={b.name} className="border border-ink p-4">
+          <div className="mt-6 grid gap-3 md:grid-cols-3">
+            {carePlans.map((plan) => (
+              <div key={plan.id} className="border border-ink p-4">
                 <p className="font-semibold">
-                  {b.name} · {b.price}
+                  {plan.name} · {plan.price}
                 </p>
-                <p className="mt-1 text-sm text-mute">{b.note}</p>
+                <p className="mt-1 text-sm text-mute">{plan.note}</p>
               </div>
             ))}
           </div>

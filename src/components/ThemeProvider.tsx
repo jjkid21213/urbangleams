@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
+import { createContext, useCallback, useContext, useMemo, useSyncExternalStore } from "react";
 
 export type Theme = "dark" | "light";
 
@@ -10,32 +10,36 @@ const ThemeCtx = createContext<{
   setTheme: (theme: Theme) => void;
 } | null>(null);
 
-function readTheme(): Theme {
+function subscribe(onStoreChange: () => void) {
+  window.addEventListener("storage", onStoreChange);
+  window.addEventListener("ug-theme", onStoreChange);
+  return () => {
+    window.removeEventListener("storage", onStoreChange);
+    window.removeEventListener("ug-theme", onStoreChange);
+  };
+}
+
+function getSnapshot(): Theme {
   try {
-    const stored = localStorage.getItem("ug-theme");
-    return stored === "light" ? "light" : "dark";
+    return localStorage.getItem("ug-theme") === "light" ? "light" : "dark";
   } catch {
     return "dark";
   }
 }
 
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>("dark");
+function getServerSnapshot(): Theme {
+  return "dark";
+}
 
-  useEffect(() => {
-    const next = readTheme();
-    setThemeState(next);
-    document.documentElement.setAttribute("data-theme", next);
-  }, []);
+export function ThemeProvider({ children }: { children: React.ReactNode }) {
+  const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   const setTheme = useCallback((next: Theme) => {
-    setThemeState(next);
     try {
       localStorage.setItem("ug-theme", next);
-    } catch {
-      /* ignore private mode */
-    }
+    } catch {}
     document.documentElement.setAttribute("data-theme", next);
+    window.dispatchEvent(new Event("ug-theme"));
   }, []);
 
   const toggle = useCallback(() => {

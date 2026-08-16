@@ -1,93 +1,113 @@
-/**
- * Quote estimator (AUD, excl. GST unless we agree otherwise).
- *
- * Base is a one-page custom build at LAUNCH_BASE.
- * Extra pages are PAGE_EACH (copy + layout, not a template clone).
- * Add-ons are fixed allowances so the range stays honest.
- * Low/high is ±12% so the number is clearly an estimate, not a contract.
- *
- * Hourly ($85) is NOT in this total — it only applies to work
- * outside a written scope after we agree the job.
- */
+export const HOURLY_AUD = 60;
+export const STARTER_BASE = 299;
+export const BUSINESS_BASE = 499;
+export const GROWTH_BASE = 799;
+export const PAGE_EACH = 50;
+export const BOOKING = 150;
+export const ECOMMERCE = 600;
+export const COPYWRITING = 150;
+export const BLOG = 150;
+export const LOGO = 120;
+export const GBP = 120;
+export const SPEED = 150;
+export const AUDIT = 99;
 
-export const HOURLY_AUD = 85;
-export const LAUNCH_BASE = 2400;
-export const PAGE_EACH = 480;
-export const BOOKING = 650;
-export const ECOMMERCE = 2800;
-export const COPYWRITING = 800;
-export const SEO = 700;
-export const PHOTO = 400;
-export const CARE_MONTH = 189;
-
-export type PackageType = "launch" | "custom" | "studio";
+export type PackageType = "starter" | "business" | "growth";
+export type CarePlan = "none" | "basic" | "business" | "premium";
 
 export type QuoteInput = {
   pages: number;
+  pkg: PackageType;
   booking: boolean;
   ecommerce: boolean;
   copywriting: boolean;
-  seo: boolean;
-  photography: boolean;
-  care: boolean;
+  blog: boolean;
+  logo: boolean;
+  gbp: boolean;
+  speed: boolean;
+  audit: boolean;
+  care: CarePlan;
 };
 
 export const pageBands = [
-  { value: "1", label: "1 page", hint: "Launch page", pages: 1 },
-  { value: "2-3", label: "2–3 pages", hint: "Tight site", pages: 3 },
-  { value: "4-6", label: "4–6 pages", hint: "Usual custom job", pages: 5 },
-  { value: "7-9", label: "7–9 pages", hint: "Studio-sized", pages: 8 },
-  { value: "10-12", label: "10–12 pages", hint: "Leaves the $2k–$6k band", pages: 11 },
+  { value: "1-3", label: "1–3 pages", hint: "Starter", pages: 3 },
+  { value: "4-6", label: "4–6 pages", hint: "Business", pages: 6 },
+  { value: "7-12", label: "7–12 pages", hint: "Growth", pages: 10 },
 ] as const;
 
 export const packageTypes = [
-  { value: "launch", label: "Launch page", hint: "One page, one job", pages: 1 },
-  { value: "custom", label: "Custom site", hint: "Four to six pages", pages: 5 },
-  { value: "studio", label: "Studio build", hint: "Fuller site, tighter art direction", pages: 8 },
+  { value: "starter", label: "Starter Website", hint: "$299 · up to 3 pages", pages: 3, included: 3, base: STARTER_BASE },
+  { value: "business", label: "Business Website", hint: "$499 · up to 6 pages", pages: 6, included: 6, base: BUSINESS_BASE },
+  { value: "growth", label: "Growth Website", hint: "From $799 · up to 12 pages", pages: 10, included: 12, base: GROWTH_BASE },
+] as const;
+
+export const careOptions = [
+  { value: "none", label: "No care plan", hint: "You can add this later", amount: 0 },
+  { value: "basic", label: "Basic Care", hint: "$19/mo · security, updates, backup", amount: 19 },
+  { value: "business", label: "Business Care", hint: "$39/mo · 30 min edits", amount: 39 },
+  { value: "premium", label: "Premium Care", hint: "$79/mo · 2 hours edits", amount: 79 },
 ] as const;
 
 export function bandFromPages(pages: number) {
-  if (pages <= 1) return "1";
-  if (pages <= 3) return "2-3";
+  if (pages <= 3) return "1-3";
   if (pages <= 6) return "4-6";
-  if (pages <= 9) return "7-9";
-  return "10-12";
+  return "7-12";
 }
 
 export function packageFromPages(pages: number): PackageType {
-  if (pages <= 1) return "launch";
-  if (pages <= 6) return "custom";
-  return "studio";
+  if (pages <= 3) return "starter";
+  if (pages <= 6) return "business";
+  return "growth";
+}
+
+export function includedPages(pkg: PackageType) {
+  if (pkg === "starter") return 3;
+  if (pkg === "business") return 6;
+  return 12;
+}
+
+export function packageBase(pkg: PackageType) {
+  if (pkg === "starter") return STARTER_BASE;
+  if (pkg === "business") return BUSINESS_BASE;
+  return GROWTH_BASE;
 }
 
 export function estimateQuote(input: QuoteInput) {
   const pages = Math.min(12, Math.max(1, Math.round(input.pages)));
-  let mid = LAUNCH_BASE;
-  if (pages > 1) mid += (pages - 1) * PAGE_EACH;
+  const included = includedPages(input.pkg);
+  const extraPages = Math.max(0, pages - included);
+  let mid = packageBase(input.pkg) + extraPages * PAGE_EACH;
   if (input.booking) mid += BOOKING;
   if (input.ecommerce) mid += ECOMMERCE;
   if (input.copywriting) mid += COPYWRITING;
-  if (input.seo) mid += SEO;
-  if (input.photography) mid += PHOTO;
-
-  const low = Math.round(mid * 0.88);
-  const high = Math.round(mid * 1.12);
-  const care = input.care ? CARE_MONTH : 0;
-
-  return { pages, mid, low, high, care };
+  if (input.blog) mid += BLOG;
+  if (input.logo) mid += LOGO;
+  if (input.gbp) mid += GBP;
+  if (input.speed) mid += SPEED;
+  if (input.audit) mid += AUDIT;
+  const care = careOptions.find((item) => item.value === input.care)?.amount ?? 0;
+  return { pages, extraPages, mid, care };
 }
 
 export function quoteLines(input: QuoteInput) {
   const pages = Math.min(12, Math.max(1, Math.round(input.pages)));
-  const lines: { label: string; amount: number }[] = [{ label: "Custom base (one page)", amount: LAUNCH_BASE }];
-  if (pages > 1) {
-    lines.push({ label: `${pages - 1} extra page${pages - 1 === 1 ? "" : "s"}`, amount: (pages - 1) * PAGE_EACH });
+  const extraPages = Math.max(0, pages - includedPages(input.pkg));
+  const pkgLabel = packageTypes.find((item) => item.value === input.pkg)?.label ?? "Package";
+  const lines: { label: string; amount: number }[] = [{ label: pkgLabel, amount: packageBase(input.pkg) }];
+  if (extraPages > 0) {
+    lines.push({
+      label: `${extraPages} extra page${extraPages === 1 ? "" : "s"}`,
+      amount: extraPages * PAGE_EACH,
+    });
   }
-  if (input.booking) lines.push({ label: "Booking / tap-to-call", amount: BOOKING });
+  if (input.booking) lines.push({ label: "Booking integration", amount: BOOKING });
   if (input.ecommerce) lines.push({ label: "E-commerce", amount: ECOMMERCE });
   if (input.copywriting) lines.push({ label: "Copywriting", amount: COPYWRITING });
-  if (input.seo) lines.push({ label: "Local SEO foundations", amount: SEO });
-  if (input.photography) lines.push({ label: "Photography coordination", amount: PHOTO });
+  if (input.blog) lines.push({ label: "Blog setup", amount: BLOG });
+  if (input.logo) lines.push({ label: "Logo refresh", amount: LOGO });
+  if (input.gbp) lines.push({ label: "Google Business Profile", amount: GBP });
+  if (input.speed) lines.push({ label: "Speed optimisation", amount: SPEED });
+  if (input.audit) lines.push({ label: "Website audit", amount: AUDIT });
   return lines;
 }
 

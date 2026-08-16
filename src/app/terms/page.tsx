@@ -18,8 +18,8 @@ export default function TermsPage() {
           when the site is live on your domain.
         </p>
         <p>
-          Package prices cover the scope. Work outside it is {site.hourly}/hr or a new quote. Two
-          revision rounds are in the package. Unlimited revisions are not.
+          Package prices cover the scope. Work outside it is {site.hourly}/hr or a new quote.
+          Revision rounds are listed on each package. Unlimited revisions are not.
         </p>
         <p>
           You own the site and content when invoices are paid. Showcase concepts on this website are

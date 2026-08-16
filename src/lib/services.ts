@@ -21,8 +21,8 @@ export const services: {
   {
     slug: "web-design",
     title: "Custom web design",
-    h1: "Custom web design for local businesses",
-    description: "Custom websites for cafes, salons, clinics, and trades in Australia. Built to get calls and bookings.",
+    h1: "Websites for local businesses",
+    description: "Websites for cafes, salons, clinics, and trades in Australia. Built to get calls and bookings.",
     outcome: "A site that looks like your business and asks for the job.",
     points: [
       "Layout written around your offer, not a theme",
@@ -32,8 +32,8 @@ export const services: {
     ],
     process: ["Call — what you sell and who walks in", "Pages you can click, not a moodboard", "Live on your domain"],
     faqs: [
-      { q: "Is this a template?", a: "No. Custom layout and type. Templates are cheaper and look like it." },
-      { q: "How long?", a: "Launch page about two weeks. Custom site three to four." },
+      { q: "Is this a template?", a: "No. Layout and type for your offer. Templates are cheaper and look like it." },
+      { q: "How long?", a: "Starter in 3–5 business days. Business in 5–7. Growth in one to two weeks." },
     ],
   },
   {
@@ -76,17 +76,17 @@ export const services: {
     slug: "maintenance",
     title: "Website maintenance",
     h1: "Keep the site current after launch",
-    description: "Monthly care for hours, prices, small changes, and hosting help.",
-    outcome: "The menu changes on Tuesday. The site changes with it.",
+    description: "Monthly care for security, backups, and small edits.",
+    outcome: "The menu changes on Tuesday. The site can change with it.",
     points: [
-      "One small change a month on Care",
-      "Hosting and domain help",
-      "Weekday replies",
-      "Priority same-day for a higher retainer",
+      "Basic Care $19/mo — security, updates, backup",
+      "Business Care $39/mo — plus 30 minutes of edits",
+      "Premium Care $79/mo — plus 2 hours and faster turnaround",
+      "Month to month",
     ],
     process: ["You send the change", "I do it in the week", "You check it live"],
     faqs: [
-      { q: "What if I need more than one change?", a: "We use the $85 hourly, or we quote a small job." },
+      { q: "What if I need more than the plan?", a: "We use $60/hr, or we quote a small job." },
       { q: "Can I cancel?", a: "Month to month. No lock-in story." },
     ],
   },
@@ -94,7 +94,7 @@ export const services: {
     slug: "speed",
     title: "Website speed",
     h1: "Make the site fast on a phone",
-    description: "Speed work so pages load before people bounce.",
+    description: "Speed work so pages load before people bounce. $150 as an add-on.",
     outcome: "Less waiting. More people stay long enough to call.",
     points: [
       "Images and fonts that are not a brick",
@@ -112,7 +112,7 @@ export const services: {
     slug: "booking",
     title: "Booking websites",
     h1: "A site that can take the booking",
-    description: "Call, SMS, or a booking tool on the first screen — not buried in a footer.",
+    description: "Call, SMS, or a booking tool on the first screen — not buried in a footer. Integration $150.",
     outcome: "Tuesday afternoons get filled without you chasing Instagram.",
     points: [
       "The action is obvious on a phone",
@@ -140,7 +140,7 @@ export const services: {
     ],
     process: ["You send the URL", "I go through it like a customer", "We talk through the note"],
     faqs: [
-      { q: "What does an audit cost?", a: "From $420. If we then do the rebuild, I take it off the package." },
+      { q: "What does an audit cost?", a: "$99. If we then do the rebuild, I take it off the package." },
       { q: "Will you roast my site?", a: "I’ll be plain. Not rude for sport." },
     ],
   },
@@ -148,7 +148,7 @@ export const services: {
     slug: "landing-pages",
     title: "Landing pages",
     h1: "Landing pages that ask for one thing",
-    description: "Campaign and QR pages with one offer and one action.",
+    description: "Campaign and QR pages with one offer and one action. Starter Website is $299.",
     outcome: "Ad spend does not dump people on a confused home page.",
     points: [
       "One offer, one button",
@@ -158,8 +158,8 @@ export const services: {
     ],
     process: ["What the ad promises", "Build the page to that promise", "You tap it before it goes live"],
     faqs: [
-      { q: "Is this the Launch package?", a: "Yes — $2,400 for a custom landing page. Extra pages are quoted." },
-      { q: "Can I A/B test?", a: "We can run two versions. That is extra time at $85/hr or a small quote." },
+      { q: "Is this the Starter package?", a: "Often, yes — $299 for up to three pages. Extra pages are $50." },
+      { q: "Can I A/B test?", a: "We can run two versions. That is extra time at $60/hr or a small quote." },
     ],
   },
 ];

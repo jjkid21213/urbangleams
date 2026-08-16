@@ -5,7 +5,7 @@ import { SampleFrame } from "@/components/SampleFrame";
 import { aboutShort } from "@/lib/about";
 import { faqs } from "@/lib/faq";
 import { packages } from "@/lib/packages";
-import { site } from "@/lib/site";
+import { launchOffer, site } from "@/lib/site";
 import { caseStudies } from "@/lib/work";
 
 export default function Home() {
@@ -74,10 +74,12 @@ export default function Home() {
       <section className="border-y border-line bg-panel">
         <div className="mx-auto max-w-6xl px-5 py-16 md:px-8">
           <h2 className="font-display text-3xl font-semibold tracking-tight">What it costs</h2>
+          <p className="mt-2 max-w-xl text-sm font-medium text-accent">{site.tagline}</p>
           <p className="mt-2 max-w-xl text-mute">
-            AUD. Invoice after we agree the job. The price is for a site that can take calls and bookings — not a pretty PDF.
+            AUD. Written scope before you pay. Launch prices while the first portfolio is being built — not a countdown clock.
           </p>
-          <div className="mt-10 grid gap-4 md:grid-cols-2">
+          <p className="mt-3 max-w-2xl border border-line bg-soft px-4 py-3 text-sm">{launchOffer}</p>
+          <div className="mt-10 grid gap-4 md:grid-cols-3">
             {packages.map((pkg) => (
               <article
                 key={pkg.id}
@@ -90,6 +92,7 @@ export default function Home() {
                     {pkg.period ?? ""}
                   </p>
                 </div>
+                {pkg.featured ? <p className="mt-1 text-sm text-accent">Most popular ⭐</p> : null}
                 <p className="mt-1 text-sm text-mute">{pkg.timeline}</p>
                 <p className="mt-4">{pkg.outcome}</p>
                 <Link href="/services" className="mt-5 inline-block text-sm btn-line">

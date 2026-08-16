@@ -8,8 +8,8 @@ export const objections = [
     a: "You can buy a logo and a theme. You cannot buy someone who will tell you the page should not exist. I am on the phone after launch.",
   },
   {
-    q: "Why does custom cost more?",
-    a: "You are paying for the thinking: what the page is for, what to cut, how someone books on a tram. A theme is cheaper because that work was skipped.",
+    q: "Why not an agency at $5k?",
+    a: "Plenty of good agencies. You are paying for their rooms and their process. I keep the site looking serious and the invoice in the hundreds, because the workflow is lean — not because the pages are cheap.",
   },
   {
     q: "I already have a site.",
@@ -17,7 +17,7 @@ export const objections = [
   },
   {
     q: "Can I update it myself?",
-    a: "Yes for copy and photos after handover. Bigger layout changes are a Care request or $85/hr so it does not break.",
+    a: "Yes for copy and photos after handover. Bigger layout changes are a Care request or $60/hr so it does not break.",
   },
   {
     q: "Who owns the site?",
@@ -29,10 +29,10 @@ export const objections = [
   },
   {
     q: "What happens after launch?",
-    a: "You can stop. Or Care at $189/month for hosting help and one small change. Extra work is quoted or hourly.",
+    a: "You can stop. Or Care from $19/month for updates and backups. Extra work is quoted or $60/hr.",
   },
   {
     q: "What if I need changes later?",
-    a: "Inside Care, one small change a month. Outside that, $85/hr or a fixed quote. No surprise retainers.",
+    a: "Basic Care is security and backups. Business Care includes 30 minutes of edits. Outside that, $60/hr or a fixed quote.",
   },
 ];

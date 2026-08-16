@@ -17,8 +17,8 @@ export const compareRows = [
     item: "Price shape",
     diy: "Cheap now, limited later",
     template: "Low quote, extras later",
-    agency: "Often $10k+ before a page is live",
-    us: "Fixed scope. $85/hr only outside it.",
+    agency: "Often thousands before a page is live",
+    us: "Starter $299, Business $499, Growth from $799. $60/hr only outside scope.",
   },
   {
     item: "Mobile and speed",

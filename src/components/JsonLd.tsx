@@ -17,7 +17,7 @@ export function JsonLd() {
       "@type": "PostalAddress",
       addressCountry: "AU",
     },
-    priceRange: "$1450–$5400",
+    priceRange: "$299–$799",
     sameAs: [site.url],
   };
 

@@ -19,8 +19,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${site.url}/work/${c.slug}`,
       lastModified: now,
     })),
-    ...caseStudies.flatMap((c) => [
-      { url: `${site.url}${c.href}`, lastModified: now },
-    ]),
   ];
 }

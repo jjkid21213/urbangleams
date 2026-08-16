@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     template: `%s — ${site.name}`,
   },
   description:
-    "Custom websites for cafes, salons, clinics, and trades in Australia. justinbusiness124@gmail.com · 0494300150.",
+    "Custom websites for cafes, salons, clinics, and trades in Australia. Starter $299, Business $499, Growth from $799. justinbusiness124@gmail.com · 0494300150.",
   alternates: { canonical: site.url },
   robots: { index: true, follow: true },
   openGraph: {

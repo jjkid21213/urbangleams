@@ -8,6 +8,11 @@
     "directory": ".open-next/assets",
     "binding": "ASSETS"
   },
+  "vars": {
+    "CONTACT_TO": "justinbusiness124@gmail.com",
+    "CONTACT_FALLBACK": "justinmureithi24@gmail.com",
+    "CONTACT_FROM": "Urban Gleams <onboarding@resend.dev>"
+  },
   "services": [
     {
       "binding": "WORKER_SELF_REFERENCE",

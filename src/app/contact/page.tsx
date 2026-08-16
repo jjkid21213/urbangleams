@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
-  const cal = process.env.NEXT_PUBLIC_CAL_URL;
+  const cal = process.env.CAL_URL || process.env.NEXT_PUBLIC_CAL_URL;
 
   return (
     <div className="mx-auto max-w-6xl px-5 py-14 md:px-8 md:py-20">
