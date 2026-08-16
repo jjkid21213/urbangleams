@@ -1,16 +1,16 @@
-import styles from "../as.module.css";
+import { SloaneShell } from "../SloaneShell";
+import styles from "../sloane.module.css";
 
 export default function MakingPage() {
   return (
-    <section className={styles.section}>
-      <h2>How a piece leaves</h2>
-      <p className={styles.note}>
-        Pattern on paper. A toile. Then cloth. One person on the machine, one on the finish. We
-        don’t photograph every seam for a feed. If you want to see it, come in.
-      </p>
-      <p className={styles.note} style={{ marginTop: "1.5rem" }}>
-        Names on this sample are invented. There is no “Maria in the workroom.”
-      </p>
-    </section>
+    <SloaneShell>
+      <div className={styles.page}>
+        <h1>Making</h1>
+        <p>
+          Cut in Collingwood. Cloth from mills we can name. This page would show process
+          photos on a real job — not stock “woman laughing with salad.”
+        </p>
+      </div>
+    </SloaneShell>
   );
 }

@@ -1,0 +1,113 @@
+.wrap {
+  min-height: 100vh;
+  background: #f7f1ea;
+  color: #2b2420;
+  font-family: "Palatino Linotype", Palatino, Georgia, serif;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.4rem 1.6rem 1.2rem;
+}
+
+.brand {
+  font-size: 1.05rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.links {
+  display: flex;
+  gap: 1.4rem;
+  font-size: 0.88rem;
+}
+
+.hero {
+  padding: 2rem 1.6rem 4rem;
+  max-width: 640px;
+}
+
+.hero h1 {
+  font-size: clamp(2.6rem, 7vw, 4.4rem);
+  font-weight: 400;
+  line-height: 1.02;
+  font-style: italic;
+}
+
+.lede {
+  margin-top: 1.2rem;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  max-width: 32rem;
+}
+
+.cta {
+  display: inline-block;
+  margin-top: 1.6rem;
+  border-bottom: 1px solid #2b2420;
+  padding-bottom: 0.15rem;
+}
+
+.strip {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid #ddd2c6;
+}
+
+.look {
+  min-height: 160px;
+  padding: 2rem 1.6rem;
+  border-bottom: 1px solid #ddd2c6;
+}
+
+.look:nth-child(1) {
+  background: #e8d7c8;
+}
+.look:nth-child(2) {
+  background: #d3c4b4;
+}
+.look:nth-child(3) {
+  background: #c4b09a;
+}
+
+.look h2 {
+  font-size: 1.3rem;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.page {
+  max-width: 640px;
+  padding: 2.5rem 1.6rem 5rem;
+}
+
+.page h1 {
+  font-size: 2.4rem;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.page p {
+  margin-top: 1rem;
+  line-height: 1.65;
+}
+
+.foot {
+  padding: 1.4rem 1.6rem 2rem;
+  font-size: 0.8rem;
+  color: #6d6258;
+}
+
+@media (min-width: 800px) {
+  .strip {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .look {
+    border-bottom: none;
+    border-right: 1px solid #ddd2c6;
+    min-height: 280px;
+  }
+}
