@@ -102,15 +102,25 @@ async function sendWeb3Forms(key: string, payload: Record<string, string>) {
 async function sendFormSubmit(to: string, payload: Record<string, string>) {
   const res = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(to)}`, {
     method: "POST",
-    headers: { "Content-Type": "application/json", Accept: "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      "User-Agent": "UrbanGleamsContact/1.0",
+    },
     body: JSON.stringify({
-      ...payload,
+      name: payload.name,
+      email: payload.email,
+      business: payload.business,
+      need: payload.package,
+      message: payload.message,
+      _subject: payload._subject,
       _captcha: "false",
       _template: "box",
     }),
   });
+  if (res.ok) return true;
   const json = (await res.json().catch(() => ({}))) as { success?: boolean | string };
-  return res.ok && (json.success === true || json.success === "true");
+  return json.success === true || json.success === "true";
 }
 
 export async function POST(request: Request) {
