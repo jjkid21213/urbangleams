@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { CtaBar } from "@/components/CtaBar";
-import { SiteMock } from "@/components/SiteMock";
+import { SampleFrame } from "@/components/SampleFrame";
 import { aboutShort } from "@/lib/about";
 import { faqs } from "@/lib/faq";
 import { packages } from "@/lib/packages";
@@ -44,27 +44,28 @@ export default function Home() {
       <section className="mx-auto max-w-6xl px-5 py-16 md:px-8">
         <div className="flex items-end justify-between gap-4">
           <div>
-            <h2 className="font-display text-3xl font-semibold tracking-tight">Showcase concepts</h2>
+            <h2 className="font-display text-3xl font-semibold tracking-tight">Three sample sites</h2>
             <p className="mt-2 text-sm text-mute">
-              Sample sites I designed to show the work. Not real clients.
+              Click in and browse. Showcase concepts — not real businesses.
             </p>
           </div>
           <Link href="/work" className="hidden text-sm btn-line md:inline-flex">
             All samples
           </Link>
         </div>
-        <div className="mt-10 grid gap-12 sm:grid-cols-2">
+        <div className="mt-10 grid gap-12">
           {caseStudies.map((study) => (
-            <Link key={study.slug} href={`/work/${study.slug}`} className="group">
-              <SiteMock theme={study.theme} title={study.name} />
-              <p className="mt-8 text-sm text-mute">
+            <div key={study.slug}>
+              <SampleFrame src={study.href} title={study.name} />
+              <p className="mt-5 text-sm text-mute">
                 {study.city} · {study.industry} · showcase
               </p>
-              <h3 className="mt-1 font-display text-2xl font-semibold group-hover:text-accent">
-                {study.name}
-              </h3>
+              <h3 className="mt-1 font-display text-2xl font-semibold">{study.name}</h3>
               <p className="mt-2 text-mute">{study.headline}</p>
-            </Link>
+              <Link href={study.href} className="btn mt-4">
+                Browse {study.name}
+              </Link>
+            </div>
           ))}
         </div>
       </section>

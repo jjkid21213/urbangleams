@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import { Source_Sans_3, Syne } from "next/font/google";
-import { ExitIntent } from "@/components/ExitIntent";
-import { Footer } from "@/components/Footer";
-import { Header } from "@/components/Header";
 import { JsonLd } from "@/components/JsonLd";
-import { StickyCta } from "@/components/StickyCta";
+import { StudioShell } from "@/components/StudioShell";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -48,13 +45,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en-AU" className={`${body.variable} ${display.variable} h-full`}>
-      <body className="flex min-h-full flex-col pb-16 antialiased md:pb-0">
+      <body className="flex min-h-full flex-col antialiased">
         <JsonLd />
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <StickyCta />
-        <ExitIntent />
+        <StudioShell>{children}</StudioShell>
       </body>
     </html>
   );

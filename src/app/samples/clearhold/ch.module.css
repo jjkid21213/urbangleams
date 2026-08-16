@@ -1,0 +1,126 @@
+.wrap {
+  --ch-bg: #0e1210;
+  --ch-ink: #e7eee8;
+  --ch-mute: #8a968c;
+  --ch-line: #243028;
+  --ch-go: #3d8f62;
+  min-height: 100vh;
+  background: var(--ch-bg);
+  color: var(--ch-ink);
+  font-family: var(--font-ch), ui-sans-serif, system-ui;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.4rem;
+  border-bottom: 1px solid var(--ch-line);
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+}
+
+.brand {
+  font-weight: 600;
+}
+
+.links {
+  display: flex;
+  gap: 1.1rem;
+  color: var(--ch-mute);
+}
+
+.hero {
+  padding: 4.5rem 1.4rem 3rem;
+  max-width: 42rem;
+}
+
+.kicker {
+  color: var(--ch-go);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  margin-top: 0.8rem;
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.lede {
+  margin-top: 1rem;
+  color: var(--ch-mute);
+  max-width: 34rem;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 1.4rem;
+  border: 1px solid var(--ch-ink);
+  padding: 0.65rem 0.95rem;
+  font-size: 0.88rem;
+}
+
+.stats {
+  display: grid;
+  gap: 1px;
+  background: var(--ch-line);
+  border-top: 1px solid var(--ch-line);
+  border-bottom: 1px solid var(--ch-line);
+}
+
+@media (min-width: 700px) {
+  .stats {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.stat {
+  background: var(--ch-bg);
+  padding: 1.4rem;
+}
+
+.stat strong {
+  display: block;
+  font-size: 1.4rem;
+}
+
+.section {
+  padding: 3rem 1.4rem;
+  max-width: 48rem;
+}
+
+.section h2 {
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.list {
+  margin-top: 1rem;
+  color: var(--ch-mute);
+}
+
+.list li {
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--ch-line);
+}
+
+.foot {
+  padding: 2rem 1.4rem 3rem;
+  color: var(--ch-mute);
+  font-size: 0.8rem;
+  border-top: 1px solid var(--ch-line);
+}
+
+.field {
+  width: 100%;
+  margin: 0.4rem 0 0.9rem;
+  padding: 0.65rem;
+  background: #151a17;
+  border: 1px solid var(--ch-line);
+  color: var(--ch-ink);
+}
