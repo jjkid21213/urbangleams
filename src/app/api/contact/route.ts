@@ -33,7 +33,7 @@ export async function POST(request: Request) {
     );
   }
 
-  const to = process.env.CONTACT_TO || "hello@urbangleams.com";
+  const to = process.env.CONTACT_TO || "justinbusiness124@gmail.com";
   const key = process.env.RESEND_API_KEY;
   const text = [
     `Name: ${name}`,

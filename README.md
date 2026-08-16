@@ -1,14 +1,14 @@
 # Urban Gleams
 
-Website for [urbangleams.com](https://urbangleams.com) — a small studio that builds sites for cafes, salons, clinics, and trades.
+Custom websites for local businesses. Live: [urbangleams.com](https://urbangleams.com)
+
+Justin — justinbusiness124@gmail.com · 0494300150
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open http://localhost:3000
+`CONTACT_TO` defaults to justinbusiness124@gmail.com. Copy `.env.example` for Resend or a calendar URL.
 
-Copy `.env.example` to `.env.local` if you want the contact form to send mail (Resend) or to embed a booking calendar.
-
-To publish: `npm run cf:deploy`
+Publish: `npm run cf:deploy`

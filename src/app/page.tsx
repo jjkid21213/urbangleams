@@ -1,86 +1,97 @@
 import Link from "next/link";
 import { CtaBar } from "@/components/CtaBar";
 import { SiteMock } from "@/components/SiteMock";
+import { aboutShort } from "@/lib/about";
 import { faqs } from "@/lib/faq";
 import { packages } from "@/lib/packages";
+import { site } from "@/lib/site";
 import { caseStudies } from "@/lib/work";
 
 export default function Home() {
   return (
     <>
-      <section className="relative overflow-hidden">
-        <div className="pointer-events-none absolute -right-24 top-10 h-72 w-72 rotate-12 bg-[radial-gradient(circle,rgba(201,165,106,0.18),transparent_70%)]" />
-        <div className="mx-auto max-w-6xl px-5 pb-24 pt-16 md:px-8 md:pt-24">
-          <p className="text-xs uppercase tracking-[0.28em] text-gleam">
-            Web studio · Australia
-          </p>
-          <h1 className="mt-6 max-w-3xl font-serif text-5xl leading-[1.05] text-paper md:text-7xl">
-            Websites that make city brands{" "}
-            <span className="italic text-gleam">gleam</span>.
-          </h1>
-          <p className="mt-6 max-w-xl text-lg text-mute">
-            I build websites for cafes, salons, clinics, and trades. Fast on a
-            phone, easy to book, and built so people actually get in touch.
-          </p>
-          <div className="mt-10 flex flex-wrap items-center gap-6">
-            <Link href="/contact" className="btn-gleam">
-              Book a 15-minute call
-            </Link>
-            <Link href="/work" className="btn-ghost">
-              See the work
-            </Link>
-          </div>
+      <section className="mx-auto max-w-6xl px-5 pb-16 pt-12 md:px-8 md:pt-20">
+        <p className="text-sm text-mute">{site.city} · custom websites</p>
+        <h1 className="rise mt-4 max-w-3xl font-display text-5xl font-semibold leading-[1.05] tracking-tight md:text-6xl">
+          A site that gets you the call, not just the look.
+        </h1>
+        <p className="mt-6 max-w-xl text-lg text-mute">
+          I design and build custom websites for cafes, salons, clinics, and trades.
+          Fast on a phone. Easy to book. Made so people actually get in touch.
+        </p>
+        <div className="mt-8 flex flex-wrap items-center gap-4">
+          <a className="btn" href={`mailto:${site.email}`}>
+            Email {site.email}
+          </a>
+          <a className="btn-line" href={site.phoneHref}>
+            Call {site.phone}
+          </a>
         </div>
-        <div className="gleam-rule" />
       </section>
 
-      <section className="mx-auto max-w-6xl px-5 py-20 md:px-8">
-        <div className="flex items-end justify-between gap-6">
-          <div>
-            <p className="text-xs uppercase tracking-[0.22em] text-gleam">Selected work</p>
-            <h2 className="mt-3 font-serif text-4xl italic">A few sample builds.</h2>
+      <section className="border-y border-line bg-panel">
+        <div className="mx-auto max-w-6xl px-5 py-12 md:px-8 md:flex md:items-end md:justify-between md:gap-10">
+          <div className="max-w-xl">
+            <h2 className="font-display text-2xl font-semibold tracking-tight">Who you’re talking to</h2>
+            <p className="mt-3 text-mute">{aboutShort}</p>
           </div>
-          <Link href="/work" className="hidden text-sm text-mute hover:text-paper md:block">
-            All work
+          <Link href="/about" className="mt-4 btn-line md:mt-0">
+            About me
           </Link>
         </div>
-        <div className="mt-12 grid gap-10 md:grid-cols-3">
+      </section>
+
+      <section className="mx-auto max-w-6xl px-5 py-16 md:px-8">
+        <div className="flex items-end justify-between gap-4">
+          <div>
+            <h2 className="font-display text-3xl font-semibold tracking-tight">Showcase concepts</h2>
+            <p className="mt-2 text-sm text-mute">
+              Sample sites I designed to show the work. Not real clients.
+            </p>
+          </div>
+          <Link href="/work" className="hidden text-sm btn-line md:inline-flex">
+            All samples
+          </Link>
+        </div>
+        <div className="mt-10 grid gap-12 sm:grid-cols-2">
           {caseStudies.map((study) => (
             <Link key={study.slug} href={`/work/${study.slug}`} className="group">
-              <SiteMock theme={study.theme} />
-              <p className="mt-4 text-xs uppercase tracking-[0.18em] text-mute">
-                {study.city} · {study.industry}
+              <SiteMock theme={study.theme} title={study.name} />
+              <p className="mt-8 text-sm text-mute">
+                {study.city} · {study.industry} · showcase
               </p>
-              <h3 className="mt-1 font-serif text-2xl group-hover:text-gleam">{study.name}</h3>
-              <p className="mt-2 text-sm text-mute">{study.headline}</p>
+              <h3 className="mt-1 font-display text-2xl font-semibold group-hover:text-accent">
+                {study.name}
+              </h3>
+              <p className="mt-2 text-mute">{study.headline}</p>
             </Link>
           ))}
         </div>
       </section>
 
-      <section className="border-y border-line bg-panel/40">
-        <div className="mx-auto max-w-6xl px-5 py-20 md:px-8">
-          <p className="text-xs uppercase tracking-[0.22em] text-gleam">Packages</p>
-          <h2 className="mt-3 max-w-lg font-serif text-4xl italic">Prices on the page.</h2>
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
+      <section className="border-y border-line bg-panel">
+        <div className="mx-auto max-w-6xl px-5 py-16 md:px-8">
+          <h2 className="font-display text-3xl font-semibold tracking-tight">What it costs</h2>
+          <p className="mt-2 max-w-xl text-mute">
+            AUD. Invoice after we agree the job. The price is for a site that can take calls and bookings — not a pretty PDF.
+          </p>
+          <div className="mt-10 grid gap-4 md:grid-cols-2">
             {packages.map((pkg) => (
               <article
                 key={pkg.id}
-                className={`flex flex-col border p-6 ${
-                  pkg.featured ? "border-gleam/50 bg-ink" : "border-line"
-                }`}
+                className={`border bg-paper p-6 ${pkg.featured ? "border-ink" : "border-line"}`}
               >
-                <p className="text-sm text-mute">{pkg.name}</p>
-                <p className="mt-3 font-serif text-4xl text-paper">
-                  {pkg.price}
-                  {pkg.period ? (
-                    <span className="text-lg text-mute">{pkg.period}</span>
-                  ) : null}
-                </p>
-                <p className="mt-1 text-xs uppercase tracking-[0.16em] text-gleam">{pkg.timeline}</p>
-                <p className="mt-4 text-sm text-mute">{pkg.summary}</p>
-                <Link href="/services" className="mt-8 text-sm text-paper underline-offset-4 hover:underline">
-                  What’s included
+                <div className="flex items-baseline justify-between gap-3">
+                  <h3 className="font-display text-xl font-semibold">{pkg.name}</h3>
+                  <p className="text-lg font-semibold">
+                    {pkg.price}
+                    {pkg.period ?? ""}
+                  </p>
+                </div>
+                <p className="mt-1 text-sm text-mute">{pkg.timeline}</p>
+                <p className="mt-4">{pkg.outcome}</p>
+                <Link href="/services" className="mt-5 inline-block text-sm btn-line">
+                  What’s in it
                 </Link>
               </article>
             ))}
@@ -88,36 +99,56 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-5 py-20 md:px-8">
-        <p className="text-xs uppercase tracking-[0.22em] text-gleam">Process</p>
-        <h2 className="mt-3 font-serif text-4xl italic">Four steps. Then you are live.</h2>
-        <ol className="mt-12 grid gap-8 md:grid-cols-4">
-          {[
-            ["01", "Call", "What you sell, who walks in, and what the current site is missing."],
-            ["02", "Design", "Layout and copy together. You see a real page before anything goes live."],
-            ["03", "Launch", "Domain, form, mobile. A URL you can send from your phone."],
-            ["04", "Care", "Optional. Small updates so the site does not go stale."],
-          ].map(([n, t, d]) => (
-            <li key={n}>
-              <p className="text-gleam">{n}</p>
-              <h3 className="mt-2 font-serif text-2xl">{t}</h3>
-              <p className="mt-2 text-sm text-mute">{d}</p>
-            </li>
-          ))}
-        </ol>
+      <section className="mx-auto max-w-6xl px-5 py-16 md:px-8">
+        <h2 className="font-display text-3xl font-semibold tracking-tight">How a job runs</h2>
+        <div className="mt-8 grid gap-8 md:grid-cols-3">
+          <div>
+            <h3 className="font-display text-xl font-semibold">Talk</h3>
+            <p className="mt-2 text-mute">
+              Email or call. What you sell, who walks in, why the current site is quiet.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-display text-xl font-semibold">Build</h3>
+            <p className="mt-2 text-mute">
+              You see real pages, not a moodboard. Copy and layout together.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-display text-xl font-semibold">Live</h3>
+            <p className="mt-2 text-mute">
+              On your domain, with a form that arrives and a number people can tap.
+            </p>
+          </div>
+        </div>
       </section>
 
       <section className="border-t border-line">
-        <div className="mx-auto max-w-6xl px-5 py-20 md:px-8">
-          <p className="text-xs uppercase tracking-[0.22em] text-gleam">FAQ</p>
-          <div className="mt-10 grid gap-10 md:grid-cols-2">
+        <div className="mx-auto max-w-6xl px-5 py-16 md:px-8">
+          <h2 className="font-display text-3xl font-semibold tracking-tight">Questions</h2>
+          <div className="mt-8 grid gap-8 md:grid-cols-2">
             {faqs.map((item) => (
               <div key={item.q}>
-                <h3 className="font-serif text-2xl">{item.q}</h3>
-                <p className="mt-3 text-mute">{item.a}</p>
+                <h3 className="font-display text-xl font-semibold">{item.q}</h3>
+                <p className="mt-2 text-mute">{item.a}</p>
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="border-t border-line">
+        <div className="mx-auto max-w-6xl px-5 py-12 md:px-8">
+          <h2 className="font-display text-2xl font-semibold">Need a specific job?</h2>
+          <p className="mt-2 text-sm text-mute">
+            <Link href="/services" className="btn-line">
+              Full pricing
+            </Link>
+            <span className="mx-2">·</span>
+            <Link href="/checklist" className="btn-line">
+              Prep checklist
+            </Link>
+          </p>
         </div>
       </section>
 

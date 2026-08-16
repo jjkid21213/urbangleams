@@ -1,4 +1,4 @@
-export type WorkTheme = "salon" | "cafe" | "trade";
+export type WorkTheme = "cafe" | "salon" | "clinic" | "trade";
 
 export type CaseStudy = {
   slug: string;
@@ -11,70 +11,69 @@ export type CaseStudy = {
   built: string;
   pages: string[];
   stack: string[];
-  targets: string[];
   note: string;
 };
 
 export const caseStudies: CaseStudy[] = [
   {
-    slug: "vellum-salon",
-    name: "Vellum",
+    slug: "batch-birch",
+    name: "Batch & Birch",
     city: "Melbourne",
-    industry: "Hair salon",
-    theme: "salon",
-    headline: "A Fitzroy salon that looked like 2014 online.",
-    problem:
-      "Walk-ins were fine on Saturday. Tuesday was quiet. The old site was a Facebook page, a faded logo, and a phone number buried under reviews. Nobody could book colour from their phone on the tram.",
-    built:
-      "A quiet one-pager: services, a short story, and a book button that stays on screen. Made as a sample of how a salon site should ask for the appointment.",
-    pages: ["Home", "Services strip", "Team", "Book"],
-    stack: ["Next.js", "Tailwind", "Cal.com embed"],
-    targets: [
-      "Book button visible on first screen",
-      "Under 2s load on mobile",
-      "Colour and cut packages readable in 10 seconds",
-    ],
-    note: "Sample project. Built around bookings, not a claim of past revenue.",
-  },
-  {
-    slug: "harbour-batch",
-    name: "Harbour Batch",
-    city: "Brisbane",
     industry: "Cafe",
     theme: "cafe",
-    headline: "A riverside cafe with a menu PDF and no hours.",
+    headline: "Hours, menu, and catering on one page you can actually read.",
     problem:
-      "Tourists Googled the name and bounced. Hours were wrong. The menu was a photograph of a chalkboard. The cafe was full of regulars who already knew — and invisible to everyone else.",
+      "A lot of cafe sites are a logo, an Instagram link, and a photo of a chalkboard. Hours are wrong. The menu is a PDF. Catering is a guess.",
     built:
-      "Hours, location, a readable menu, and a catering enquiry. A sample for cafes that need functions to come in, not just likes.",
-    pages: ["Home", "Menu", "Hours & find us", "Catering"],
-    stack: ["Next.js", "Tailwind", "Structured data for hours"],
-    targets: [
-      "Hours and map in one glance",
-      "Menu without pinch-zoom",
-      "Catering form for weekday functions",
-    ],
-    note: "Sample project. Built around enquiries, not a claim of past revenue.",
+      "A sample cafe site: today’s hours, a typed menu, where to find us, and a catering form. Built to show how I’d treat a real hospitality job.",
+    pages: ["Home", "Menu", "Find us", "Catering"],
+    stack: ["Next.js", "Cloudflare"],
+    note: "Sample only. Not a real client.",
   },
   {
-    slug: "northline-electrical",
-    name: "Northline Electrical",
+    slug: "cut-room",
+    name: "The Cut Room",
     city: "Sydney",
+    industry: "Salon",
+    theme: "salon",
+    headline: "Services and a book button that stay on the screen.",
+    problem:
+      "Salon sites often hide the booking under a Facebook page or a widget that dies on mobile. Colour vs cut is a wall of text.",
+    built:
+      "A sample salon one-pager: cuts, colour, a short team note, and a book action that does not scroll away.",
+    pages: ["Home", "Services", "Team", "Book"],
+    stack: ["Next.js", "Cloudflare"],
+    note: "Sample only. Not a real client.",
+  },
+  {
+    slug: "river-physio",
+    name: "River Physio",
+    city: "Brisbane",
+    industry: "Clinic",
+    theme: "clinic",
+    headline: "What you treat, who you see, how to get an appointment.",
+    problem:
+      "Clinic sites pile on stock smiles and a 12-item nav. People want: do you treat this, are you taking patients, and what’s the number.",
+    built:
+      "A sample clinic: treatments, first-visit notes, and call / request a time. Calm layout, no stock-photo wallpaper.",
+    pages: ["Home", "Treatments", "First visit", "Contact"],
+    stack: ["Next.js", "Cloudflare"],
+    note: "Sample only. Not a real client.",
+  },
+  {
+    slug: "kerr-electrical",
+    name: "Kerr Electrical",
+    city: "Adelaide",
     industry: "Trade",
     theme: "trade",
-    headline: "A licensed sparkie competing with directory spam.",
+    headline: "Licence, suburbs, call or SMS. That’s the site.",
     problem:
-      "The business lived on Hipages ads. The ‘website’ was a Wix template with stock hard-hats and a form that went nowhere. Homeowners in the inner west could not tell if they were insured, local, or still trading.",
+      "Trades get stuck on directory ads and a Wix page with a form that goes nowhere. Homeowners can’t tell if you’re local or still trading.",
     built:
-      "Licence, suburbs, emergency vs planned work, and a call/SMS pair on every page. A sample for trades who want jobs from search, not another lead mill.",
+      "A sample trade site: licence up front, suburbs listed, emergency vs booked work, and tap-to-call on every page.",
     pages: ["Home", "Services", "Areas", "Contact"],
-    stack: ["Next.js", "Tailwind", "Click-to-call"],
-    targets: [
-      "Call and SMS on mobile header",
-      "Licence and insurance on the first screen",
-      "Suburb list for local search",
-    ],
-    note: "Sample project. Built around jobs, not a claim of past revenue.",
+    stack: ["Next.js", "Cloudflare"],
+    note: "Sample only. Not a real client.",
   },
 ];
 

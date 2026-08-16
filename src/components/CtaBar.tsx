@@ -1,20 +1,25 @@
-import Link from "next/link";
+import { site } from "@/lib/site";
 
 export function CtaBar() {
   return (
-    <section className="border-t border-line">
-      <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-5 py-16 md:flex-row md:items-center md:px-8">
+    <section className="border-t border-line bg-soft">
+      <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-5 py-14 md:flex-row md:items-center md:px-8">
         <div>
-          <p className="font-serif text-3xl italic text-paper md:text-4xl">
+          <h2 className="font-display text-3xl font-semibold tracking-tight">
             If the site is quiet, the phone is quiet.
-          </p>
-          <p className="mt-3 max-w-md text-mute">
-            Fifteen minutes. If it is not a fit, I will say so.
+          </h2>
+          <p className="mt-2 max-w-md text-mute">
+            Email or call. If it is not a fit, I will say so.
           </p>
         </div>
-        <Link href="/contact" className="btn-gleam">
-          Book a call
-        </Link>
+        <div className="flex flex-wrap gap-3">
+          <a className="btn" href={`mailto:${site.email}`}>
+            Email Justin
+          </a>
+          <a className="btn-line" href={site.phoneHref}>
+            {site.phone}
+          </a>
+        </div>
       </div>
     </section>
   );

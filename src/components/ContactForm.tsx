@@ -33,16 +33,16 @@ export function ContactForm() {
       form.reset();
     } catch {
       setStatus("err");
-      setError("Network error. Use the email link.");
+      setError("Network error. Use the email or phone instead.");
     }
   }
 
   if (status === "ok") {
     return (
-      <p className="border border-line bg-panel p-6 text-paper">
+      <p className="border border-line bg-panel p-6">
         {emailed
-          ? "Thanks. I will reply within one business day."
-          : `Thanks. If this does not land in my inbox, send the same note to ${site.email}.`}
+          ? "Got it. I’ll reply on a weekday."
+          : `If that did not land, email ${site.email} or call ${site.phone}.`}
       </p>
     );
   }
@@ -62,7 +62,7 @@ export function ContactForm() {
         <input name="business" className="field" />
       </label>
       <label className="grid gap-1 text-sm">
-        <span className="text-mute">Package</span>
+        <span className="text-mute">What you need</span>
         <select name="package" className="field" defaultValue="">
           <option value="">Not sure yet</option>
           {packages.map((p) => (
@@ -73,12 +73,12 @@ export function ContactForm() {
         </select>
       </label>
       <label className="grid gap-1 text-sm">
-        <span className="text-mute">What do you need?</span>
+        <span className="text-mute">Tell me about the job</span>
         <textarea required name="message" rows={5} className="field resize-y" />
       </label>
-      {status === "err" ? <p className="text-sm text-gleam">{error}</p> : null}
-      <button type="submit" className="btn-gleam w-fit" disabled={status === "sending"}>
-        {status === "sending" ? "Sending…" : "Send enquiry"}
+      {status === "err" ? <p className="text-sm text-accent">{error}</p> : null}
+      <button type="submit" className="btn w-fit" disabled={status === "sending"}>
+        {status === "sending" ? "Sending…" : "Send"}
       </button>
     </form>
   );
