@@ -5,6 +5,7 @@ import { ExitIntent } from "./ExitIntent";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
 import { StickyCta } from "./StickyCta";
+import { ThemeProvider } from "./ThemeProvider";
 
 export function StudioShell({ children }: { children: React.ReactNode }) {
   const path = usePathname();
@@ -15,12 +16,14 @@ export function StudioShell({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <div className="flex min-h-full flex-col pb-16 md:pb-0">
-      <Header />
-      <main className="flex-1">{children}</main>
-      <Footer />
-      <StickyCta />
-      <ExitIntent />
-    </div>
+    <ThemeProvider>
+      <div className="flex min-h-full flex-col pb-20 md:pb-0">
+        <Header />
+        <main className="flex-1">{children}</main>
+        <Footer />
+        <StickyCta />
+        <ExitIntent />
+      </div>
+    </ThemeProvider>
   );
 }

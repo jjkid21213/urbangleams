@@ -1,21 +1,23 @@
 import type { Metadata } from "next";
-import { Source_Sans_3, Syne } from "next/font/google";
+import { Figtree, Outfit } from "next/font/google";
 import { JsonLd } from "@/components/JsonLd";
 import { StudioShell } from "@/components/StudioShell";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-const body = Source_Sans_3({
+const body = Figtree({
   variable: "--font-body",
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
+  weight: ["400", "500", "600", "700"],
 });
 
-const display = Syne({
+const display = Outfit({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["600", "700"],
+  weight: ["500", "600", "700"],
 });
+
+const themeBoot = `(function(){try{var t=localStorage.getItem("ug-theme");document.documentElement.setAttribute("data-theme",t==="light"?"light":"dark");}catch(e){document.documentElement.setAttribute("data-theme","dark");}})();`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -44,8 +46,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en-AU" className={`${body.variable} ${display.variable} h-full`}>
+    <html
+      lang="en-AU"
+      data-theme="dark"
+      suppressHydrationWarning
+      className={`${body.variable} ${display.variable} h-full`}
+    >
       <body className="flex min-h-full flex-col antialiased">
+        <script dangerouslySetInnerHTML={{ __html: themeBoot }} />
         <JsonLd />
         <StudioShell>{children}</StudioShell>
       </body>

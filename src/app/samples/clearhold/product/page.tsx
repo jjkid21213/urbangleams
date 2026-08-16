@@ -1,14 +1,19 @@
 import styles from "../ch.module.css";
+import { ProductTabs, QuoteTicket } from "../ui";
 
 export default function ProductPage() {
   return (
     <section className={styles.section}>
-      <h2>Product</h2>
-      <ul className={styles.list}>
-        <li>Request a quote. Lock a spread. Settle to named accounts.</li>
-        <li>Not a retail app. Not a yield product. Not a Discord.</li>
-        <li>Language you can paste into a board pack.</li>
-      </ul>
+      <p className={styles.kicker}>Product</p>
+      <h2>Request a quote. Lock a spread. Settle to named accounts.</h2>
+      <p className={styles.lede}>
+        Not a retail app. Not a yield product. Not a Discord. Language you can paste into a board pack. Use the tabs,
+        then log a sample ticket — it stays in the browser.
+      </p>
+      <div className={styles.grid2} style={{ marginTop: "1rem" }}>
+        <ProductTabs />
+        <QuoteTicket />
+      </div>
     </section>
   );
 }

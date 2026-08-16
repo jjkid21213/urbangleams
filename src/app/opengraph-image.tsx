@@ -10,8 +10,8 @@ export default function Og() {
         style={{
           width: "100%",
           height: "100%",
-          background: "#f3eee4",
-          color: "#16130f",
+          background: "#080a0d",
+          color: "#eef1f4",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
@@ -19,7 +19,7 @@ export default function Og() {
         }}
       >
         <div style={{ fontSize: 64, fontWeight: 700 }}>Urban Gleams</div>
-        <div style={{ fontSize: 28, marginTop: 16 }}>
+        <div style={{ fontSize: 28, marginTop: 16, color: "#8b949e" }}>
           Custom websites. justinbusiness124@gmail.com · 0494300150
         </div>
       </div>

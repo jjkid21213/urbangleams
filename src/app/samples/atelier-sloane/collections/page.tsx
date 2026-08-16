@@ -1,21 +1,14 @@
 import styles from "../as.module.css";
+import { Lookbook } from "../ui";
 
 export default function CollectionsPage() {
   return (
     <section className={styles.section}>
-      <h2>Collections</h2>
-      <div className={styles.row}>
-        <span>Coat</span>
-        <span>Wool</span>
-      </div>
-      <div className={styles.row}>
-        <span>Dress</span>
-        <span>Two colours</span>
-      </div>
-      <div className={styles.row}>
-        <span>Shirt</span>
-        <span>Linen</span>
-      </div>
+      <h2>This season</h2>
+      <p className={styles.note}>
+        Three pieces. Hold what you want to try — the list stays on this page. Nothing is sold here.
+      </p>
+      <Lookbook hold />
     </section>
   );
 }

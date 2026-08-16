@@ -1,13 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { packages, type PackageId } from "@/lib/packages";
+import { SelectMenu } from "./SelectMenu";
+import { packages } from "@/lib/packages";
 import { site } from "@/lib/site";
 
 export function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "ok" | "err">("idle");
   const [emailed, setEmailed] = useState(true);
   const [error, setError] = useState("");
+  const [pkg, setPkg] = useState("");
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -31,6 +33,7 @@ export function ContactForm() {
       setEmailed(Boolean(json.emailed));
       setStatus("ok");
       form.reset();
+      setPkg("");
     } catch {
       setStatus("err");
       setError("Network error. Use the email or phone instead.");
@@ -39,7 +42,7 @@ export function ContactForm() {
 
   if (status === "ok") {
     return (
-      <p className="border border-line bg-panel p-6">
+      <p className="ug-card p-6">
         {emailed
           ? "Got it. I’ll reply on a weekday."
           : `If that did not land, email ${site.email} or call ${site.phone}.`}
@@ -61,17 +64,16 @@ export function ContactForm() {
         <span className="text-mute">Business</span>
         <input name="business" className="field" />
       </label>
-      <label className="grid gap-1 text-sm">
-        <span className="text-mute">What you need</span>
-        <select name="package" className="field" defaultValue="">
-          <option value="">Not sure yet</option>
-          {packages.map((p) => (
-            <option key={p.id} value={p.id as PackageId}>
-              {p.name}
-            </option>
-          ))}
-        </select>
-      </label>
+      <SelectMenu
+        label="What you need"
+        name="package"
+        value={pkg}
+        onChange={setPkg}
+        options={[
+          { value: "", label: "Not sure yet" },
+          ...packages.map((item) => ({ value: item.id, label: item.name, hint: item.price })),
+        ]}
+      />
       <label className="grid gap-1 text-sm">
         <span className="text-mute">Tell me about the job</span>
         <textarea required name="message" rows={5} className="field resize-y" />

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { Fraunces, Source_Serif_4 } from "next/font/google";
+import { Caveat, Fraunces, Source_Serif_4 } from "next/font/google";
 import { ShowcaseBar } from "@/components/ShowcaseBar";
 import styles from "./hb.module.css";
+import { HarbourShell } from "./ui";
 
 const display = Fraunces({
   variable: "--font-hb-display",
@@ -14,39 +14,23 @@ const body = Source_Serif_4({
   subsets: ["latin"],
 });
 
+const hand = Caveat({
+  variable: "--font-hb-hand",
+  subsets: ["latin"],
+  weight: ["500", "700"],
+});
+
 export const metadata: Metadata = {
   title: "Harbour Batch (showcase)",
   description: "Showcase cafe concept by Urban Gleams. Not a real business.",
   robots: { index: false, follow: true },
 };
 
-const links = [
-  ["/", "Home"],
-  ["/menu", "Menu"],
-  ["/visit", "Visit"],
-  ["/catering", "Catering"],
-] as const;
-
 export default function HarbourLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className={`${display.variable} ${body.variable} ${styles.wrap}`}>
+    <div className={`${display.variable} ${body.variable} ${hand.variable} ${styles.wrap}`}>
       <ShowcaseBar name="Harbour Batch" />
-      <nav className={styles.nav}>
-        <Link href="/samples/harbour-batch" className={styles.brand}>
-          Harbour Batch
-        </Link>
-        <div className={styles.links}>
-          {links.map(([href, label]) => (
-            <Link key={href} href={`/samples/harbour-batch${href === "/" ? "" : href}`}>
-              {label}
-            </Link>
-          ))}
-        </div>
-      </nav>
-      {children}
-      <footer className={styles.foot}>
-        Howard Smith Wharves, Brisbane · Showcase concept · Not a real cafe
-      </footer>
+      <HarbourShell>{children}</HarbourShell>
     </div>
   );
 }

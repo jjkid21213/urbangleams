@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CtaBar } from "@/components/CtaBar";
+import { PricingCalculator } from "@/components/PricingCalculator";
 import { SampleFrame } from "@/components/SampleFrame";
 import { aboutShort } from "@/lib/about";
 import { faqs } from "@/lib/faq";
@@ -80,7 +81,7 @@ export default function Home() {
             {packages.map((pkg) => (
               <article
                 key={pkg.id}
-                className={`border bg-paper p-6 ${pkg.featured ? "border-ink" : "border-line"}`}
+                className={`ug-card p-6 ${pkg.featured ? "border-ink" : "border-line"}`}
               >
                 <div className="flex items-baseline justify-between gap-3">
                   <h3 className="font-display text-xl font-semibold">{pkg.name}</h3>
@@ -97,6 +98,17 @@ export default function Home() {
               </article>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-5 py-16 md:px-8">
+        <p className="ug-kicker">Estimate</p>
+        <h2 className="mt-2 font-display text-3xl font-semibold tracking-tight">Move the controls</h2>
+        <p className="mt-2 max-w-xl text-mute">
+          Live range, not a contract. Email or call when the number looks close.
+        </p>
+        <div className="mt-8">
+          <PricingCalculator />
         </div>
       </section>
 

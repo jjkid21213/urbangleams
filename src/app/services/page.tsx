@@ -79,7 +79,7 @@ export default function ServicesPage() {
         <section className="mt-16 overflow-x-auto">
           <h2 className="font-display text-3xl font-semibold tracking-tight">What you are comparing</h2>
           <p className="mt-2 text-sm text-mute">Types of jobs, not named companies.</p>
-          <table className="mt-6 w-full min-w-[720px] border-collapse text-sm">
+          <table className="ug-table mt-6">
             <thead>
               <tr className="border-b border-ink text-left">
                 <th className="py-3 pr-3"> </th>

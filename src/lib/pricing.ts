@@ -20,6 +20,8 @@ export const SEO = 700;
 export const PHOTO = 400;
 export const CARE_MONTH = 189;
 
+export type PackageType = "launch" | "custom" | "studio";
+
 export type QuoteInput = {
   pages: number;
   booking: boolean;
@@ -29,6 +31,34 @@ export type QuoteInput = {
   photography: boolean;
   care: boolean;
 };
+
+export const pageBands = [
+  { value: "1", label: "1 page", hint: "Launch page", pages: 1 },
+  { value: "2-3", label: "2–3 pages", hint: "Tight site", pages: 3 },
+  { value: "4-6", label: "4–6 pages", hint: "Usual custom job", pages: 5 },
+  { value: "7-9", label: "7–9 pages", hint: "Studio-sized", pages: 8 },
+  { value: "10-12", label: "10–12 pages", hint: "Leaves the $2k–$6k band", pages: 11 },
+] as const;
+
+export const packageTypes = [
+  { value: "launch", label: "Launch page", hint: "One page, one job", pages: 1 },
+  { value: "custom", label: "Custom site", hint: "Four to six pages", pages: 5 },
+  { value: "studio", label: "Studio build", hint: "Fuller site, tighter art direction", pages: 8 },
+] as const;
+
+export function bandFromPages(pages: number) {
+  if (pages <= 1) return "1";
+  if (pages <= 3) return "2-3";
+  if (pages <= 6) return "4-6";
+  if (pages <= 9) return "7-9";
+  return "10-12";
+}
+
+export function packageFromPages(pages: number): PackageType {
+  if (pages <= 1) return "launch";
+  if (pages <= 6) return "custom";
+  return "studio";
+}
 
 export function estimateQuote(input: QuoteInput) {
   const pages = Math.min(12, Math.max(1, Math.round(input.pages)));
@@ -45,6 +75,20 @@ export function estimateQuote(input: QuoteInput) {
   const care = input.care ? CARE_MONTH : 0;
 
   return { pages, mid, low, high, care };
+}
+
+export function quoteLines(input: QuoteInput) {
+  const pages = Math.min(12, Math.max(1, Math.round(input.pages)));
+  const lines: { label: string; amount: number }[] = [{ label: "Custom base (one page)", amount: LAUNCH_BASE }];
+  if (pages > 1) {
+    lines.push({ label: `${pages - 1} extra page${pages - 1 === 1 ? "" : "s"}`, amount: (pages - 1) * PAGE_EACH });
+  }
+  if (input.booking) lines.push({ label: "Booking / tap-to-call", amount: BOOKING });
+  if (input.ecommerce) lines.push({ label: "E-commerce", amount: ECOMMERCE });
+  if (input.copywriting) lines.push({ label: "Copywriting", amount: COPYWRITING });
+  if (input.seo) lines.push({ label: "Local SEO foundations", amount: SEO });
+  if (input.photography) lines.push({ label: "Photography coordination", amount: PHOTO });
+  return lines;
 }
 
 export function formatAud(n: number) {

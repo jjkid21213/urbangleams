@@ -18,7 +18,7 @@ export const caseStudies: CaseStudy[] = [
     name: "Harbour Batch",
     city: "Brisbane",
     industry: "Cafe",
-    headline: "A riverside cafe site you can actually walk through.",
+    headline: "A riverside cafe with a printed menu, hours, and a working tray.",
     problem:
       "Cafe sites often dump you on Instagram. Hours are wrong. The menu is a photo of a board.",
     built:
@@ -32,7 +32,7 @@ export const caseStudies: CaseStudy[] = [
     name: "Clearhold",
     city: "Sydney",
     industry: "Treasury software",
-    headline: "A fintech product site that talks like an adult.",
+    headline: "A treasury console: blotter, settlement tabs, sample quote ticket.",
     problem:
       "A lot of crypto pages look like a nightclub flyer. Serious operators bounce.",
     built:
@@ -46,7 +46,7 @@ export const caseStudies: CaseStudy[] = [
     name: "Atelier Sloane",
     city: "Melbourne",
     industry: "Womenswear",
-    headline: "A boutique that feels like a shop, not a theme.",
+    headline: "An editorial shop: overlay index, lookbook tabs, studio hold list.",
     problem:
       "Fashion templates all look the same: grey sans, fake sale countdown, stock models.",
     built:

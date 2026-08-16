@@ -1,11 +1,28 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { RangeSlider } from "./RangeSlider";
+import { SelectMenu } from "./SelectMenu";
+import { Switch } from "./Switch";
 import { site } from "@/lib/site";
-import { estimateQuote, formatAud, HOURLY_AUD } from "@/lib/pricing";
+import {
+  bandFromPages,
+  estimateQuote,
+  formatAud,
+  HOURLY_AUD,
+  packageFromPages,
+  packageTypes,
+  pageBands,
+  quoteLines,
+  type PackageType,
+} from "@/lib/pricing";
+
+const pageTicks = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
 export function PricingCalculator() {
   const [pages, setPages] = useState(5);
+  const [pkg, setPkg] = useState<PackageType>("custom");
+  const [band, setBand] = useState("4-6");
   const [booking, setBooking] = useState(true);
   const [ecommerce, setEcommerce] = useState(false);
   const [copywriting, setCopywriting] = useState(true);
@@ -13,69 +30,117 @@ export function PricingCalculator() {
   const [photography, setPhotography] = useState(false);
   const [care, setCare] = useState(true);
 
-  const quote = useMemo(
-    () =>
-      estimateQuote({
-        pages,
-        booking,
-        ecommerce,
-        copywriting,
-        seo,
-        photography,
-        care,
-      }),
-    [pages, booking, ecommerce, copywriting, seo, photography, care],
-  );
+  const input = { pages, booking, ecommerce, copywriting, seo, photography, care };
+  const quote = useMemo(() => estimateQuote(input), [pages, booking, ecommerce, copywriting, seo, photography, care]);
+  const lines = useMemo(() => quoteLines(input), [pages, booking, ecommerce, copywriting, seo, photography, care]);
+
+  function setPageCount(next: number) {
+    const clamped = Math.min(12, Math.max(1, Math.round(next)));
+    setPages(clamped);
+    setBand(bandFromPages(clamped));
+    setPkg(packageFromPages(clamped));
+  }
 
   return (
-    <div className="grid gap-8 border border-ink bg-panel p-6 md:grid-cols-2 md:p-8">
-      <div className="grid gap-4">
-        <label className="grid gap-2 text-sm">
-          <span className="flex justify-between">
-            <span>Pages</span>
-            <span className="font-semibold">{pages}</span>
-          </span>
-          <input
-            type="range"
-            min={1}
-            max={12}
-            value={pages}
-            onChange={(e) => setPages(Number(e.target.value))}
+    <div className="ug-calc">
+      <div className="ug-calc-controls">
+        <SelectMenu
+          label="Package type"
+          value={pkg}
+          options={[...packageTypes]}
+          onChange={(value) => {
+            const next = packageTypes.find((item) => item.value === value);
+            if (!next) return;
+            setPkg(next.value);
+            setPageCount(next.pages);
+          }}
+        />
+        <SelectMenu
+          label="Page band"
+          value={band}
+          options={[...pageBands]}
+          onChange={(value) => {
+            const next = pageBands.find((item) => item.value === value);
+            if (!next) return;
+            setBand(next.value);
+            setPageCount(next.pages);
+          }}
+        />
+        <RangeSlider
+          id="pages"
+          label="Pages"
+          min={1}
+          max={12}
+          value={pages}
+          ticks={pageTicks}
+          valueLabel={`${pages} page${pages === 1 ? "" : "s"}`}
+          onChange={setPageCount}
+        />
+        <div className="grid gap-2.5">
+          <Switch
+            label="Booking / tap-to-call setup"
+            hint="The action sits on the first screen."
+            checked={booking}
+            onChange={setBooking}
           />
-        </label>
-        {[
-          ["Booking / tap-to-call setup", booking, setBooking],
-          ["E-commerce", ecommerce, setEcommerce],
-          ["Copywriting", copywriting, setCopywriting],
-          ["Local SEO foundations", seo, setSeo],
-          ["Photography coordination", photography, setPhotography],
-          ["Care after launch", care, setCare],
-        ].map(([label, on, set]) => (
-          <label key={String(label)} className="flex items-center gap-3 text-sm">
-            <input
-              type="checkbox"
-              checked={on as boolean}
-              onChange={(e) => (set as (v: boolean) => void)(e.target.checked)}
-            />
-            {label as string}
-          </label>
-        ))}
+          <Switch
+            label="E-commerce"
+            hint="Takes you out of the usual $2k–$6k custom band."
+            checked={ecommerce}
+            onChange={setEcommerce}
+          />
+          <Switch
+            label="Copywriting"
+            hint="I draft the pages from the call notes."
+            checked={copywriting}
+            onChange={setCopywriting}
+          />
+          <Switch
+            label="Local SEO foundations"
+            hint="Titles, headings, sitemap — not a ranking promise."
+            checked={seo}
+            onChange={setSeo}
+          />
+          <Switch
+            label="Photography coordination"
+            hint="Shot list and brief. Photographer billed separately."
+            checked={photography}
+            onChange={setPhotography}
+          />
+          <Switch
+            label="Care after launch"
+            hint={`${formatAud(quote.care || 189)} / month. Optional. Hosting help plus one small change.`}
+            checked={care}
+            onChange={setCare}
+          />
+        </div>
       </div>
-      <div>
-        <p className="text-sm text-mute">Estimate only — not a quote</p>
-        <p className="mt-2 font-display text-4xl font-semibold">
+      <aside className="ug-calc-result" aria-live="polite">
+        <p className="ug-kicker">Estimate only — not a contract</p>
+        <p className="ug-calc-total">
           {formatAud(quote.low)}–{formatAud(quote.high)}
         </p>
-        <p className="mt-2 text-sm text-mute">
-          Midpoint {formatAud(quote.mid)}. Work outside a written scope is {HOURLY_AUD}/hr.
+        <p className="text-sm text-mute">
+          Midpoint {formatAud(quote.mid)}. Work outside a written scope is ${HOURLY_AUD}/hr.
         </p>
+        <div className="ug-calc-lines">
+          {lines.map((line) => (
+            <div className="ug-calc-line" key={line.label}>
+              <span>{line.label}</span>
+              <span>{formatAud(line.amount)}</span>
+            </div>
+          ))}
+        </div>
         {quote.care ? (
-          <p className="mt-2 text-sm">Plus Care {formatAud(quote.care)} / month if you want it.</p>
-        ) : null}
-        <p className="mt-4 text-sm text-mute">
-          E-commerce and extra pages move you out of the usual $2k–$6k custom band. I’ll say so on the call.
+          <p className="text-sm">Plus Care {formatAud(quote.care)} / month if you want it.</p>
+        ) : (
+          <p className="text-sm text-mute">Care is off — you can add it later, month to month.</p>
+        )}
+        <p className="text-sm text-mute">
+          E-commerce and extra pages move you out of the usual $2k–$6k custom band. I’ll say so on
+          the call.
         </p>
-        <div className="mt-6 flex flex-wrap gap-3">
+        <div className="mt-2 flex flex-wrap gap-3">
           <a className="btn" href={`mailto:${site.email}?subject=Website estimate`}>
             Email this through
           </a>
@@ -83,7 +148,7 @@ export function PricingCalculator() {
             Call {site.phone}
           </a>
         </div>
-      </div>
+      </aside>
     </div>
   );
 }
